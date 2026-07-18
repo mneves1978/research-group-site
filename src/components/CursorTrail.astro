@@ -1,0 +1,70 @@
+<canvas id="cursor-trail" aria-hidden="true"></canvas>
+
+<style>
+  #cursor-trail {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    width: 100vw;
+    height: 100vh;
+  }
+</style>
+
+<script>
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const canvas = document.getElementById('cursor-trail') as HTMLCanvasElement | null;
+
+  if (canvas && !prefersReducedMotion) {
+    const ctx = canvas.getContext('2d');
+    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    function resize() {
+      canvas!.width = window.innerWidth * dpr;
+      canvas!.height = window.innerHeight * dpr;
+      ctx?.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    type Dot = { x: number; y: number; life: number };
+    let dots: Dot[] = [];
+    let lastX = -9999;
+    let lastY = -9999;
+
+    window.addEventListener('mousemove', (e) => {
+      // Add a few dots between the last and current point so fast
+      // movement still leaves a continuous trail rather than gaps.
+      const steps = 3;
+      for (let i = 0; i < steps; i++) {
+        const t = i / steps;
+        dots.push({
+          x: lastX === -9999 ? e.clientX : lastX + (e.clientX - lastX) * t,
+          y: lastY === -9999 ? e.clientY : lastY + (e.clientY - lastY) * t,
+          life: 1,
+        });
+      }
+      lastX = e.clientX;
+      lastY = e.clientY;
+      if (dots.length > 120) dots.splice(0, dots.length - 120);
+    });
+
+    function draw() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+      for (const d of dots) {
+        const size = 5 * d.life;
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(63, 61, 240, ${0.5 * d.life})`;
+        ctx.fill();
+        d.life -= 0.035;
+      }
+      dots = dots.filter((d) => d.life > 0);
+
+      requestAnimationFrame(draw);
+    }
+    draw();
+  }
+</script>

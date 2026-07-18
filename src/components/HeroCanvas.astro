@@ -1,0 +1,91 @@
+<canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
+
+<script>
+  // A quiet field of nodes connected by lines, drifting slowly and
+  // brightening near the cursor. Meant to evoke the group's subject
+  // matter (interaction + visualization) without being a gimmick.
+  const canvas = document.getElementById('hero-canvas') as HTMLCanvasElement | null;
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let width = 0;
+    let height = 0;
+    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let points: { x: number; y: number; vx: number; vy: number }[] = [];
+    let mouse = { x: -9999, y: -9999 };
+
+    function resize() {
+      const rect = canvas!.parentElement!.getBoundingClientRect();
+      width = rect.width;
+      height = rect.height;
+      canvas!.width = width * dpr;
+      canvas!.height = height * dpr;
+      canvas!.style.width = width + 'px';
+      canvas!.style.height = height + 'px';
+      ctx?.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const count = Math.round((width * height) / 26000);
+      points = Array.from({ length: count }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.15,
+        vy: (Math.random() - 0.5) * 0.15,
+      }));
+    }
+
+    function draw() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, width, height);
+
+      for (const p of points) {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+      }
+
+      for (let i = 0; i < points.length; i++) {
+        for (let j = i + 1; j < points.length; j++) {
+          const a = points[i];
+          const b = points[j];
+          const d = Math.hypot(a.x - b.x, a.y - b.y);
+          if (d < 120) {
+            ctx.strokeStyle = `rgba(63, 61, 240, ${0.12 * (1 - d / 120)})`;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+        const dMouse = Math.hypot(points[i].x - mouse.x, points[i].y - mouse.y);
+        const near = dMouse < 160;
+        ctx.fillStyle = near ? 'rgba(63, 61, 240, 0.9)' : 'rgba(23, 23, 26, 0.35)';
+        ctx.beginPath();
+        ctx.arc(points[i].x, points[i].y, near ? 2.4 : 1.6, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      if (!prefersReducedMotion) {
+        requestAnimationFrame(draw);
+      }
+    }
+
+    window.addEventListener('resize', resize);
+    canvas.parentElement?.addEventListener('mousemove', (e) => {
+      const rect = canvas!.parentElement!.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+    canvas.parentElement?.addEventListener('mouseleave', () => {
+      mouse.x = -9999;
+      mouse.y = -9999;
+    });
+
+    resize();
+    draw();
+    if (prefersReducedMotion) {
+      // draw a single static frame only
+    }
+  }
+</script>

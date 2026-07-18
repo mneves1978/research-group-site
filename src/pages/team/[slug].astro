@@ -1,0 +1,39 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const team = await getCollection('team');
+  return team.map((m) => ({
+    params: { slug: m.slug },
+    props: { member: m },
+  }));
+}
+
+const { member } = Astro.props;
+const { Content } = await member.render();
+const { name, role, photo, email, website, orcid } = member.data;
+---
+<Base title={name}>
+  <section style="padding-top:64px;">
+    <div class="container">
+      <div class="grid grid-2" style="align-items:start; gap:48px;">
+        <div class="thumb" style="aspect-ratio:1/1;">
+          <img src={photo} alt={name} />
+        </div>
+        <div>
+          <span class="eyebrow">{role}</span>
+          <h1>{name}</h1>
+          <article style="margin-top:20px;">
+            <Content />
+          </article>
+          <div style="margin-top:24px; display:flex; gap:14px; flex-wrap:wrap;">
+            {email && <a class="tag" href={`mailto:${email}`} style="text-decoration:none;">email</a>}
+            {website && <a class="tag" href={website} target="_blank" rel="noopener" style="text-decoration:none;">website</a>}
+            {orcid && <a class="tag" href={`https://orcid.org/${orcid}`} target="_blank" rel="noopener" style="text-decoration:none;">orcid</a>}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

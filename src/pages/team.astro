@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import TeamCard from '../components/TeamCard.astro';
+import { getCollection } from 'astro:content';
+
+const all = await getCollection('team');
+const active = all.filter((m) => m.data.active).sort((a, b) => a.data.order - b.data.order);
+const alumni = all.filter((m) => !m.data.active).sort((a, b) => a.data.order - b.data.order);
+---
+<Base title="Team">
+  <section style="padding-top:64px;">
+    <div class="container">
+      <span class="eyebrow">Team</span>
+      <h1>The people</h1>
+      <div class="grid grid-4" style="margin-top:48px;">
+        {active.map((m) => (
+          <TeamCard slug={m.slug} name={m.data.name} role={m.data.role} photo={m.data.photo} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {alumni.length > 0 && (
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Alumni</span>
+          <h2>Past members</h2>
+        </div>
+        <div class="grid grid-4">
+          {alumni.map((m) => (
+            <TeamCard slug={m.slug} name={m.data.name} role={m.data.role} photo={m.data.photo} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</Base>

@@ -1,0 +1,31 @@
+---
+const links = [
+  { href: '/', label: 'About' },
+  { href: '/goals', label: 'Goals' },
+  { href: '/team', label: 'Team' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/publications', label: 'Publications' },
+  { href: '/contacts', label: 'Contacts' },
+];
+const current = Astro.url.pathname;
+
+function isCurrent(href: string) {
+  if (href === '/') return current === '/';
+  return current.startsWith(href);
+}
+---
+<header class="site-nav">
+  <a class="brand" href="/">RESEARCH<br />GROUP</a>
+  <ul>
+    {links.map((link) => (
+      <li>
+        <a
+          href={link.href}
+          aria-current={isCurrent(link.href) ? 'page' : undefined}
+        >
+          {link.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</header>

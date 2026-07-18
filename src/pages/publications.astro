@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import PublicationItem from '../components/PublicationItem.astro';
+import { getCollection } from 'astro:content';
+
+const all = await getCollection('publications');
+
+const sections = [
+  { key: 'book', label: 'Books' },
+  { key: 'book-chapter', label: 'Book Chapters' },
+  { key: 'journal-article', label: 'Journal Articles' },
+  { key: 'conference-paper', label: 'Conference Papers' },
+];
+
+const grouped = sections.map((s) => ({
+  ...s,
+  items: all
+    .filter((p) => p.data.category === s.key)
+    .sort((a, b) => b.data.year - a.data.year),
+}));
+---
+<Base title="Publications">
+  <section style="padding-top:64px;">
+    <div class="container">
+      <span class="eyebrow">Publications</span>
+      <h1>Papers and reports</h1>
+    </div>
+  </section>
+
+  {grouped.map((group) => group.items.length > 0 && (
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">{group.items.length}</span>
+          <h2>{group.label}</h2>
+        </div>
+        <ul class="pub-list">
+          {group.items.map((p) => (
+            <PublicationItem
+              title={p.data.title}
+              authors={p.data.authors}
+              venue={p.data.venue}
+              year={p.data.year}
+              pdf={p.data.pdf}
+              doi={p.data.doi}
+            />
+          ))}
+        </ul>
+      </div>
+    </section>
+  ))}
+</Base>

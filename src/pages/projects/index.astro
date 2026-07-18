@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const all = (await getCollection('projects')).sort((a, b) => b.data.year - a.data.year);
+---
+<Base title="Projects">
+  <section style="padding-top:64px;">
+    <div class="container">
+      <span class="eyebrow">Projects</span>
+      <h1>What we're building</h1>
+      <div class="grid grid-2" style="margin-top:48px;">
+        {all.map((p) => (
+          <ProjectCard
+            slug={p.slug}
+            title={p.data.title}
+            summary={p.data.summary}
+            tags={p.data.tags}
+            year={p.data.year}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

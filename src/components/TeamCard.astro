@@ -1,0 +1,18 @@
+---
+interface Props {
+  slug: string;
+  name: string;
+  role: string;
+  photo: string;
+}
+const { slug, name, role, photo } = Astro.props;
+---
+<div class="card team-card reveal">
+  <div class="thumb">
+    <img src={photo} alt={name} loading="lazy" />
+  </div>
+  <div class="body">
+    <span class="eyebrow">{role}</span>
+    <h3><a href={`/team/${slug}`}>{name}</a></h3>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+backend:
+  name: github
+  repo: mneves1978/research-group-site-9b0   # <-- change this
+  branch: main
+  base_url: https://cms-oauth.marco-fautl.workers.dev   # <-- change this after step 3
+  auth_endpoint: auth
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "team"
+    label: "Team"
+    folder: "src/content/team"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Role", name: "role", widget: "string" }
+      - { label: "Photo", name: "photo", widget: "image" }
+      - { label: "Display order (lower = first)", name: "order", widget: "number", value_type: "int", default: 99 }
+      - { label: "Email", name: "email", widget: "string", required: false }
+      - { label: "Website", name: "website", widget: "string", required: false }
+      - { label: "ORCID", name: "orcid", widget: "string", required: false }
+      - { label: "Currently active member", name: "active", widget: "boolean", default: true }
+      - { label: "Bio", name: "body", widget: "markdown" }
+
+  - name: "projects"
+    label: "Projects"
+    folder: "src/content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Summary (shown on the card)", name: "summary", widget: "text" }
+      - { label: "Cover image", name: "cover", widget: "image" }
+      - { label: "Tags", name: "tags", widget: "list", default: [] }
+      - { label: "Status", name: "status", widget: "select", options: ["ongoing", "completed"], default: "ongoing" }
+      - { label: "Year", name: "year", widget: "number", value_type: "int" }
+      - label: "Gallery images"
+        name: "gallery"
+        widget: "list"
+        required: false
+        default: []
+        field: { label: "Image", name: "image", widget: "image" }
+      - label: "External links"
+        name: "links"
+        widget: "list"
+        required: false
+        default: []
+        fields:
+          - { label: "Label", name: "label", widget: "string" }
+          - { label: "URL", name: "url", widget: "string" }
+      - { label: "Featured on homepage", name: "featured", widget: "boolean", default: false }
+      - { label: "Full description", name: "body", widget: "markdown" }
+
+  - name: "publications"
+    label: "Publications"
+    folder: "src/content/publications"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Authors", name: "authors", widget: "string", hint: "e.g. A. Costa, M. Lopes" }
+      - { label: "Venue", name: "venue", widget: "string", hint: "e.g. CHI 2027" }
+      - { label: "Year", name: "year", widget: "number", value_type: "int" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Book", value: "book" }
+          - { label: "Book Chapter", value: "book-chapter" }
+          - { label: "Journal Article", value: "journal-article" }
+          - { label: "Conference Paper", value: "conference-paper" }
+      - { label: "PDF file", name: "pdf", widget: "file", required: false }
+      - { label: "DOI", name: "doi", widget: "string", required: false }
+      - { label: "Related project (slug)", name: "project", widget: "string", required: false }

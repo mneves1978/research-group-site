@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import HeroCanvas from '../components/HeroCanvas.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection('projects');
+const featured = allProjects
+  .filter((p) => p.data.featured)
+  .sort((a, b) => b.data.year - a.data.year)
+  .slice(0, 3);
+---
+<Base title="Home">
+  <section class="hero">
+    <HeroCanvas />
+    <div class="container">
+      <span class="eyebrow">Design · Interaction · Visualization</span>
+      <h1>We study design interactions,<br />in a broad scope.</h1>
+      <p class="lede">
+        From screen-based graphic interfaces to design dynamics for territories.
+        From traditional media to innovative visualizations and hybrid accomplishments.
+      </p>
+      <p>
+        We intend to assess the interferences and consequences of design, interactions and visualizations,
+        as expanding research fields, with related professional activities and educational training,
+        contributing to knowledge to be shared with various academic and social stakeholders.
+      </p>
+      <p>
+        Our work seeks to understand and redefine the limits of design through processes in which
+        information, technology, science, and creative practice are closely related. We follow an exploratory,
+        descriptive, but also practice-based research perspective.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Selected work</span>
+        <h2>Featured projects</h2>
+      </div>
+      <div class="grid grid-2">
+        {featured.map((p) => (
+          <ProjectCard
+            slug={p.slug}
+            title={p.data.title}
+            summary={p.data.summary}
+            tags={p.data.tags}
+            year={p.data.year}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

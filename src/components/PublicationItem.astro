@@ -1,0 +1,22 @@
+---
+interface Props {
+  title: string;
+  authors: string;
+  venue: string;
+  year: number;
+  pdf?: string;
+  doi?: string;
+}
+const { title, authors, venue, year, pdf, doi } = Astro.props;
+---
+<li class="pub-item reveal">
+  <span class="pub-year">{year}</span>
+  <div>
+    <h3 style="font-family: var(--font-sans); font-weight: 600; font-size: 1.02rem;">{title}</h3>
+    <p class="pub-meta">{authors} — {venue}</p>
+  </div>
+  <div class="pub-links">
+    {pdf && <a href={pdf} target="_blank" rel="noopener">PDF</a>}
+    {doi && <a href={`https://doi.org/${doi}`} target="_blank" rel="noopener">DOI</a>}
+  </div>
+</li>

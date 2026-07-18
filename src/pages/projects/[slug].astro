@@ -1,0 +1,53 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((p) => ({
+    params: { slug: p.slug },
+    props: { project: p },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+const { title, summary, cover, tags, year, status, gallery, links } = project.data;
+---
+<Base title={title} description={summary}>
+  <section style="padding-top:64px;">
+    <div class="container">
+      <span class="eyebrow">{year} · {status}</span>
+      <h1>{title}</h1>
+      <p class="lede">{summary}</p>
+      <div class="tags" style="margin-bottom:32px;">
+        {tags.map((tag: string) => <span class="tag">{tag}</span>)}
+      </div>
+      <div class="thumb" style="aspect-ratio:16/9; margin-bottom:40px;">
+        <img src={cover} alt={title} />
+      </div>
+
+      <article style="max-width:70ch;">
+        <Content />
+      </article>
+
+      {gallery && gallery.length > 0 && (
+        <div class="grid grid-2" style="margin-top:48px;">
+          {gallery.map((src: string) => (
+            <div class="thumb">
+              <img src={src} alt="" />
+            </div>
+          ))}
+        </div>
+      )}
+
+      {links && links.length > 0 && (
+        <div style="margin-top:40px; display:flex; gap:14px; flex-wrap:wrap;">
+          {links.map((l: { label: string; url: string }) => (
+            <a class="btn" href={l.url} target="_blank" rel="noopener">{l.label}</a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</Base>

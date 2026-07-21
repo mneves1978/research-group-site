@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: mneves1978/research-group-site-9b0   # <-- change this
+  repo: mneves1978/research-group-site   # <-- change this
   branch: main
   base_url: https://cms-oauth.marco-fautl.workers.dev   # <-- change this after step 3
   auth_endpoint: auth

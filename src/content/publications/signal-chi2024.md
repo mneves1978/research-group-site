@@ -1,9 +1,10 @@
 ---
-title: "Designing for Legibility Under Pressure: A Toolkit for Clinical Dashboards"
-authors: "A. Costa, R. Lima"
-venue: "CHI 2024"
-year: 2024
-category: "journal-article"
-pdf: "/files/signal-chi2024.pdf"
-project: "signal"
+title: "Printed Interactivity: Towards a New Understanding of Graphic Design"
+authors: M. Neves
+venue: "Iridescent: Icograda Journal of Design Research"
+year: 2013
+category: journal-article
+pdf: ""
+doi: https://doi.org/10.1080/19235003.2012.11428508
+project: ""
 ---

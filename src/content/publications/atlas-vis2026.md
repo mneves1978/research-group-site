@@ -1,10 +1,11 @@
 ---
-title: "Layered Zoom: Preserving Spatial Context in Multi-Scale Urban Visualization"
-authors: "A. Costa, J. Ferreira, M. Santos"
-venue: "IEEE VIS 2026"
+title: Designing Interaction at the Convergence of Print Media and Autonomous Systems
+authors: M. Neves, C. Bozzi, A. Melo
+venue: Design, User Experience, and Usability. HCII 2026. Lecture Notes in
+  Computer Science
 year: 2026
-category: "conference-paper"
-pdf: "/files/layered-zoom-2026.pdf"
-doi: "10.1000/example.doi"
-project: "atlas"
+category: conference-paper
+pdf: ""
+doi: https://doi.org/10.1007/978-3-032-30089-8_26
+project: ""
 ---

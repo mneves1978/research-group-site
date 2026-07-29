@@ -1,18 +1,22 @@
 ---
-title: "LOW-TECH"
-summary: "Low-Tech Interaction Design: A Necessary Concept for the Materiality of Interaction and the Critical Role of Designers."
-cover: "/images/projects/atlas-cover.jpg"
-tags: ["low-tech", "interaction design", "materiality ofinteraction"]
-status: "ongoing"
+title: LOW-TECH
+summary: "Low-Tech Interaction Design: A Necessary Concept for the Materiality
+  of Interaction and the Critical Role of Designers."
+cover: /images/projects/atlas-cover.jpg
+tags:
+  - low-tech
+  - interaction design
+  - materiality of interaction
+status: ongoing
 year: 2026
 gallery:
-  - "/images/projects/atlas-1.jpg"
-  - "/images/projects/atlas-2.jpg"
+  - /images/projects/atlas-1.jpg
+  - /images/projects/atlas-2.jpg
 links:
-  - label: "Project page"
-    url: "https://example.com/atlas"
-  - label: "GitHub"
-    url: "https://github.com/example/atlas"
+  - label: Project page
+    url: https://example.com/atlas
+  - label: GitHub
+    url: https://github.com/example/atlas
 featured: true
 ---
 

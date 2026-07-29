@@ -11,8 +11,7 @@ const alumni = all.filter((m) => !m.data.active).sort((a, b) => a.data.order - b
   <section style="padding-top:64px;">
     <div class="container">
       <span class="eyebrow">Team</span>
-      <h1>The people</h1>
-      <div class="grid grid-4" style="margin-top:48px;">
+      <div class="grid grid-4" style="margin-top:32px;">
         {active.map((m) => (
           <TeamCard slug={m.slug} name={m.data.name} role={m.data.role} photo={m.data.photo} />
         ))}

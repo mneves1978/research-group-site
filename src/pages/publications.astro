@@ -23,12 +23,11 @@ const grouped = sections.map((s) => ({
   <section style="padding-top:64px;">
     <div class="container">
       <span class="eyebrow">Publications</span>
-      <h1>Papers and reports</h1>
     </div>
   </section>
 
   {grouped.map((group) => group.items.length > 0 && (
-    <section>
+    <section class="pub-section">
       <div class="container">
         <div class="section-head">
           <span class="eyebrow">{group.items.length}</span>

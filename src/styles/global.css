@@ -130,7 +130,6 @@ p {
   display: flex;
   flex-direction: column;
   gap: 44px;
-  border-right: 1px solid var(--line);
 }
 
 .site-nav .brand {
@@ -226,7 +225,7 @@ main {
 /* ---------- Sections ---------- */
 
 section {
-  padding: 88px 0;
+  padding: 44px 0;
   border-bottom: 1px solid var(--line);
 }
 
@@ -235,7 +234,7 @@ section:last-of-type {
 }
 
 .section-head {
-  margin-bottom: 48px;
+  margin-bottom: 24px;
 }
 
 /* ---------- Hero ---------- */
@@ -454,6 +453,15 @@ section:last-of-type {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.pub-section {
+  padding: 20px 0;
+border-bottom: none;
+}
+
+.pub-section .section-head {
+  margin-bottom: 12px;
 }
 
 .pub-item {

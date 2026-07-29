@@ -25,10 +25,8 @@ const goals = [
   <section style="padding-top:64px;">
     <div class="container">
       <span class="eyebrow">Goals</span>
-      <h1>What we're working toward</h1>
-      <p class="lede">Replace this with a short statement of the group's mission.</p>
 
-      <div class="grid grid-2" style="margin-top:56px; column-gap:56px;">
+      <div class="grid grid-2" style="margin-top:32px; column-gap:56px;">
         {goals.map((g) => (
           <div class="reveal">
             <div class="goal-icon" set:html={g.icon} />

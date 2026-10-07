@@ -1,9 +1,9 @@
 ---
-name: "Ana Melo"
-role: "Full member"
-photo: "/images/team/joao-ferreira.jpg"
+name: Ana Melo
+role: Full member
+photo: /images/uploads/ana-melo.jpg
 order: 2
-email: "anamelo@fa.ulisboa.pt"
+email: anamelo@fa.ulisboa.pt
 active: true
 ---
 

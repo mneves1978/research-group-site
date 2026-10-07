@@ -4,7 +4,9 @@ summary: Museu do Futuro das Aldeias de Montanha (Museum of the Future of the
   Mountain Villages)
 cover: /images/uploads/classification-of-technology-paradigms-and-methods.png
 tags:
-  - interaction design;designforsocialinnovation;interactiveexperiences
+  - interaction design
+  - design for social innovation
+  - interactive experiences
 status: completed
 year: 2025
 gallery: []

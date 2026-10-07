@@ -3,7 +3,9 @@ title: VISTA
 summary: Visual Interaction Systems for Transparent AI in Fashion E-commerce
 cover: /images/uploads/classification-of-technology-paradigms-and-methods.png
 tags:
-  - fashione-tail;human-aiinteraction;human-ailiteracy
+  - fashione-tail
+  - human-ai interaction
+  - human-ai literacy
 status: ongoing
 year: 2026
 gallery: []

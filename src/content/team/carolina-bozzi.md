@@ -1,11 +1,11 @@
 ---
-name: "Carolina Bozzi"
-role: "Full member"
-photo: "/images/team/ana-costa.jpg"
+name: Carolina Bozzi
+role: Full member
+photo: /images/uploads/carolina-bozzi.jpg
 order: 3
-email: "carolinamarianna@edu.ulisboa.pt"
-website: "https://example.com"
-orcid: "0000-0000-0000-0000"
+email: carolinamarianna@edu.ulisboa.pt
+website: https://example.com
+orcid: 0000-0000-0000-0000
 active: true
 ---
 

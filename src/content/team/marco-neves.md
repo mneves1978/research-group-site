@@ -1,11 +1,11 @@
 ---
-name: "Marco Neves"
-role: "Coordinator"
-photo: "/images/team/ana-costa.jpg"
+name: Marco Neves
+role: Coordinator
+photo: /images/uploads/marco-neves.jpg
 order: 1
-email: "mneves@fa.ulisboa.pt"
-website: "https://example.com"
-orcid: "0000-0000-0000-0000"
+email: mneves@fa.ulisboa.pt
+website: https://example.com
+orcid: 0000-0000-0000-0000
 active: true
 ---
 

@@ -1,11 +1,11 @@
 ---
-name: "Cristina Pires Santos"
-role: "Full member"
-photo: "/images/team/ana-costa.jpg"
+name: Cristina Pires Santos
+role: Full member
+photo: /images/uploads/cristina-santos.jpg
 order: 4
-email: "cristina.santos@ipbeja.pt"
-website: "https://example.com"
-orcid: "0000-0000-0000-0000"
+email: cristina.santos@ipbeja.pt
+website: https://example.com
+orcid: 0000-0000-0000-0000
 active: true
 ---
 

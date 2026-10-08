@@ -2,7 +2,7 @@
 title: LOW-TECH
 summary: "Low-Tech Interaction Design: A Necessary Concept for the Materiality
   of Interaction and the Critical Role of Designers."
-cover: /images/projects/atlas-cover.jpg
+cover: /images/uploads/low-tech-01.jpg
 tags:
   - low-tech
   - interaction design
@@ -10,7 +10,7 @@ tags:
 status: ongoing
 year: 2026
 gallery:
-  - /images/projects/atlas-1.jpg
+  - /images/uploads/low-tech-02.jpg
   - /images/projects/atlas-2.jpg
 links:
   - label: Project page

@@ -1,6 +1,6 @@
 ---
 title: "Interactions to Be: The Case of Speculative Interactive Print Media"
-authors: Neves, M., Silva, S., & Bozzi, C.
+authors: M. Neves, S. Silva & C. Bozzi
 venue: " Developments in Design Research and Practice II. Senses 2021"
 year: 2023
 category: book-chapter

@@ -17,13 +17,9 @@ featured: false
 ---
 Adaptive systems increasingly reorder suggestions, change layouts and adjust their behaviour on their own. Those who use them can see that something has changed, but often not why, or how to influence it, and so they can lose trust and a sense of agency. This project treats adaptive design systems as design artefacts. It asks how their behaviour can be made interpretable in human–system interaction.
 
-
-
 Approach 
 
 The project follows a Research through Design methodology that combines contextual inquiry with designers, co-design workshops, prototyping and multimodal interaction analysis, grounded in a literature review and expert critique.
-
-
 
 Results 
 

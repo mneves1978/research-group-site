@@ -11,7 +11,7 @@ status: ongoing
 year: 2026
 gallery:
   - /images/uploads/low-tech-02.jpg
-  - /images/projects/atlas-2.jpg
+  - /images/uploads/low-tech-03.jpg
 links:
   - label: Project page
     url: https://example.com/atlas

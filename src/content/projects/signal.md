@@ -1,14 +1,16 @@
 ---
 title: INCREASE
 summary: Interactive Print Media Design and Autonomous Systems
-cover: /images/projects/signal-cover.jpg
+cover: /images/uploads/increase01.jpg
 tags:
   - interaction design
   - print media
   - autonomous systems
 status: completed
 year: 2024
-gallery: []
+gallery:
+  - /images/uploads/increase02.jpg
+  - /images/uploads/increase03.jpg
 links: []
 featured: false
 ---
